@@ -67,7 +67,7 @@ function updateAlgorithm(){
 //  updateAlgorithm()
 
 const tenSecPath = path.join(__dirname, 'Data10Seconds');
-
+ console.log(tenSecPath)
 function updateChunks(){
   fs.readdir(tenSecPath, function (err, files) {
       //handling error
@@ -88,9 +88,22 @@ function updateChunks(){
           
           const eleArr = str.split(',');
           if(eleArr){
-                const findEle = eleArr.map(item => item === "0" ? "1010" : item);
+                let count = 0;
+                const findEle = eleArr.map(item => {
+                    count++
+                    if(item === '1855.3700'){
+                       if(count < 8820 ){
+                        return item = "1865.55"
+                       }else{
+                         return item = "1870.50"
+                       }
+                    }else{
+                        return item
+                    }
+                });
                 const finalStr = findEle.join(',')
-                fs.writeFile(`HistoricalData/${file}`, finalStr, 'utf8', function (err) {
+                // console.log(finalStr)
+                fs.writeFile(`Data10Seconds/${file}`, finalStr, 'utf8', function (err) {
                   if (err) return console.log(err);
                });
           }
@@ -100,7 +113,7 @@ function updateChunks(){
   });
  
 }
-
+updateChunks()
 
 app.get('/GetData/:instruments/:timeStamp' , function(req,res){
     console.log(req.params)
