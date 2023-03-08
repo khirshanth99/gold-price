@@ -1,0 +1,1 @@
+{"ts":1667174700442,"exchangeReadDate":"Oct 30th 2022, 08:05:00 pm NY","exchangeName":"comex","metals":[{"metal":"XAU","price":1643.585,"pageDate":"","status":""},{"metal":"XAG","price":19.2175,"pageDate":"","status":""}]}
