@@ -92,7 +92,7 @@ function updateChunks(){
                 const findEle = eleArr.map(item => {
                     count++
                     if(item === '1855.3700'){
-                       if(count < 8820 ){
+                       if(count < 12000 ){
                         return item = "1865.55"
                        }else{
                          return item = "1870.50"
