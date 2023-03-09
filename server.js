@@ -149,36 +149,36 @@ updateChunks()
 // }
 // )
 
-// router.get('/GetData/:instruments/:timeStamp', function (req, res) {
+router.get('/GetData/:instruments/:timeStamp', function (req, res) {
 
 
-//   var file = req.params.instruments.substring(0, 7);
-//   var timeStamp = 0;
+  var file = req.params.instruments.substring(0, 7);
+  var timeStamp = 0;
   
 
-//   if(timeStamp == '0') {
+  if(timeStamp == '0') {
 
   
 
-//     console.log('File Based /GetData/' + instruments + ' -> theFile : ' + theFile);
+    console.log('File Based /GetData/' + instruments + ' -> theFile : ' + theFile);
 
-//     fs.readFile(`Data10Seconds/${file}`,"utf8", function(err, str){
-//       if (err)
-//       {
-//         console.error("Error reading : " + '/GetData/' + instruments + ' -> theFile : ' + theFile);
+    fs.readFile(`Data10Seconds/${file}`,"utf8", function(err, str){
+      if (err)
+      {
+        console.error("Error reading : " + '/GetData/' + instruments + ' -> theFile : ' + theFile);
       
-//       } else {
+      } else {
    
-//         res.setHeader('Cache-Control', 'public, max-age=10');
-//         res.setHeader("Access-Control-Allow-Origin", "*");
-//         res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//         res.contentType('application/json');
-//         res.jsonp([str]);
-//       }
+        res.setHeader('Cache-Control', 'public, max-age=10');
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.contentType('application/json');
+        res.jsonp([str]);
+      }
 
-//     });
+    });
 
 
-//   }
+  }
 
-// });
+});
