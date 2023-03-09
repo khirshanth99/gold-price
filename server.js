@@ -29,40 +29,40 @@ app.listen(PORT, () => {
 
 
 
-const directoryPath = path.join(__dirname, 'HistoricalData');
+// const directoryPath = path.join(__dirname, 'HistoricalData');
 
-function updateAlgorithm(){
-    fs.readdir(directoryPath, function (err, files) {
-        //handling error
-        if (err) {
-            return console.log('Unable to scan directory: ' + err);
-        } 
-        //listing all files using forEach
-        files.forEach(function (file ,err) {
-            // Do whatever you want to do with the file
-            console.log(file)
-            if (err) {
-                return console.log('Unable to iterate files: ' + err);
-            }
-           fs.readFile(`HistoricalData/${file}`, 'utf8', function(err ,str){
-            if (err) {
-                return console.log('Unable to scan file: ' + err);
-            } 
-            console.log(str.split(','))
-            const eleArr = str.split(',');
-            if(eleArr){
-                  const findEle = eleArr.map(item => item === "0" ? "1010" : item);
-                  const finalStr = findEle.join(',')
-                  fs.writeFile(`HistoricalData/${file}`, finalStr, 'utf8', function (err) {
-                    if (err) return console.log(err);
-                 });
-            }
-          });
+// function updateAlgorithm(){
+//     fs.readdir(directoryPath, function (err, files) {
+//         //handling error
+//         if (err) {
+//             return console.log('Unable to scan directory: ' + err);
+//         } 
+//         //listing all files using forEach
+//         files.forEach(function (file ,err) {
+//             // Do whatever you want to do with the file
+//             console.log(file)
+//             if (err) {
+//                 return console.log('Unable to iterate files: ' + err);
+//             }
+//            fs.readFile(`HistoricalData/${file}`, 'utf8', function(err ,str){
+//             if (err) {
+//                 return console.log('Unable to scan file: ' + err);
+//             } 
+//             console.log(str.split(','))
+//             const eleArr = str.split(',');
+//             if(eleArr){
+//                   const findEle = eleArr.map(item => item === "0" ? "1010" : item);
+//                   const finalStr = findEle.join(',')
+//                   fs.writeFile(`HistoricalData/${file}`, finalStr, 'utf8', function (err) {
+//                     if (err) return console.log(err);
+//                  });
+//             }
+//           });
         
-        });
-    });
+//         });
+//     });
    
-}
+// }
 
 //  updateAlgorithm()
 
@@ -115,39 +115,39 @@ function updateChunks(){
 }
 updateChunks()
 
-app.get('/GetData/:instruments/:timeStamp' , function(req,res){
-    console.log(req.params)
-       var file = req.params.instruments.substring(0, 7);
-       console.log(file)
-      var timeStamp = 0;
+// app.get('/GetData/:instruments/:timeStamp' , function(req,res){
+//     console.log(req.params)
+//        var file = req.params.instruments.substring(0, 7);
+//        console.log(file)
+//       var timeStamp = 0;
       
     
-      if(timeStamp == '0') {
+//       if(timeStamp == '0') {
     
       
     
 
     
-        fs.readFile(`Data10Seconds/${file}.txt`,"utf8", function(err, str){
-          if (err)
-          {
-           console.log(err)
+//         fs.readFile(`Data10Seconds/${file}.txt`,"utf8", function(err, str){
+//           if (err)
+//           {
+//            console.log(err)
           
-          } else {
+//           } else {
        
-            res.setHeader('Cache-Control', 'public, max-age=10');
-            res.setHeader("Access-Control-Allow-Origin", "*");
-            res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-            res.contentType('application/json');
-            res.jsonp([str]);
-          }
+//             res.setHeader('Cache-Control', 'public, max-age=10');
+//             res.setHeader("Access-Control-Allow-Origin", "*");
+//             res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//             res.contentType('application/json');
+//             res.jsonp([str]);
+//           }
     
-        });
+//         });
     
     
-      }
-}
-)
+//       }
+// }
+// )
 
 // router.get('/GetData/:instruments/:timeStamp', function (req, res) {
 
