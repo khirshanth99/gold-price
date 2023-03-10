@@ -6,8 +6,8 @@ const { MongoClient } = require('mongodb');
 const routes = require('./app/routes/index')
 const mongoUrl = 'mongodb://gpgRoot:6XdiyoKjs@ec2-34-196-142-118.compute-1.amazonaws.com:27017/xrates?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false'
 const db = require("./app/model");
-var router = express();
-var mongoConnection;
+// var router = express();
+// var mongoConnection;
 // require('./app/routes/auag_rate.router')(app);
 // Connect to the db
 // MongoClient.connect(mongoUrl, function(err, db) {
@@ -91,7 +91,7 @@ function updateChunks(){
                 let count = 0;
                 const findEle = eleArr.map(item => {
                     count++
-                    if(item === '1850.50'){
+                    if(item === '1855.3700'){
                        if(count < 12000 ){
                         return item = "1865.55"
                        }else{
@@ -113,7 +113,7 @@ function updateChunks(){
   });
  
 }
-// updateChunks()
+updateChunks()
 
 app.get('/GetData/:instruments/:timeStamp' , function(req,res){
     console.log(req.params)
